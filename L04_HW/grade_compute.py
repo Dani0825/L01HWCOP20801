@@ -8,11 +8,9 @@ def gradeToNumber(grade):
     elif letter == 'B':
         value = 3.0
     elif letter == 'C':
-        value = 3.0
+        value = 2.0
     elif letter == 'D':
         value = 2.0
-    elif letter == 'E':
-        value = 1.0
     elif letter == 'F':
         value = 0.0
 
@@ -48,5 +46,22 @@ def numberToGrade(num):
         return "D"
     return "F"
     
-    
+    # Computes the average of a list of numbers
+def computeAverage(nums):
+    return sum(nums) / len(nums)
+
+
+# Drops the lowest grade from a list and returns the removed value
+def dropLowest(nums):
+    lowest = min(nums)
+    nums.remove(lowest)
+    return lowest
+
+
+# Checks if all remaining grades are B- (2.7) or lower
+def allBelowBMinus(nums):
+    for n in nums:
+        if n > 2.7:
+            return False
+    return True
     
