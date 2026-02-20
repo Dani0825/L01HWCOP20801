@@ -61,6 +61,20 @@ class Cannonball:
 
         return xs, ys
 
+#Inherited class
+class Crazyball(Cannonball):
+    def __init__(self, x):
+        super().__init__(x)
+        self.rand_q = 0
+    
+    def move(self, sec, grav):
+        super().move(sec, grav)
+        
+        self.rand_q = random.randrange(0, 10)
+
+        if self.getX() < 400 and self.rand_q > 5:
+            self._y += random.randrange(-5, 5)
+
 def run_app():
     st.title("Cannonball Trajectory")
 
