@@ -107,6 +107,12 @@ def run_app():
     gravity_options = {"Earth": 9.81, "Moon": 1.62}
     gravity_name = st.selectbox("Gravity", options=list(gravity_options.keys()), index=0)
     gravity = gravity_options[gravity_name]
+
+    mode = st.selectbox(
+        "Trajectory type",
+        ["Normal", "Crazy"]
+    )
+
     step = .1
 
     col1, col2 = st.columns(2)
@@ -114,7 +120,12 @@ def run_app():
 
     if simulate:
         angle_rad = radians(angle_deg)
-        ball = Cannonball(0)
+
+        if mode == "Crazy":
+            ball = Crazyball(0)
+        else:
+            ball = Cannonball(0)
+            
         xs, ys = ball.shoot(angle_rad, velocity, gravity, step)
 
         if not xs:
