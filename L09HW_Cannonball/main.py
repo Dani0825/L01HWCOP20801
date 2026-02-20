@@ -125,25 +125,10 @@ def run_app():
             ball = Crazyball(0)
         else:
             ball = Cannonball(0)
-            
+
         xs, ys = ball.shoot(angle_rad, velocity, gravity, step)
 
-        if not xs:
-            st.warning("No trajectory points were generated.")
-            return
-
-        df = pd.DataFrame({"x": xs, "y": ys})
-
-        chart = (
-            alt.Chart(df)
-            .mark_line()
-            .encode(
-                x=alt.X("x:Q", scale=alt.Scale(domain=[0, 200]), title="Distance (m)"),
-                y=alt.Y("y:Q", scale=alt.Scale(domain=[0, 100]), title="Height (m)")
-            )
-            .properties(width=700, height=400)
-        )
-        st.altair_chart(chart, use_container_width=True)
+        ball.printer.main_print(xs, ys)
 
 
 if __name__ == "__main__":
