@@ -18,8 +18,8 @@ class Print_Iface:
             alt.Chart(df)
             .mark_line()
             .encode(
-                x = alt.x("x:Q", scale = alt.Scale(domain=[0,200]), title="Distance (m)"),
-                y = alt.y("y:Q", scale = alt.Scale(domain=[0,100]), title="Height (m)")
+                x = alt.X("x:Q", scale = alt.Scale(domain=[0,200]), title="Distance (m)"),
+                y = alt.Y("y:Q", scale = alt.Scale(domain=[0,100]), title="Height (m)")
             )
             .properties (width=700, height = 400)
         )
